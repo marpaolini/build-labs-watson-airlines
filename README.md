@@ -170,7 +170,7 @@ Example:
 
 - If using the [sample code](./source/back-end/sample/) found on this repository, installing [NodeJS](https://nodejs.org/en/download/) is required.
 - If using containers, a container runtime will need to be installed. Recommendations are [Docker](https://docs.docker.com/get-docker/) and [Podman](https://podman.io/getting-started/installation).
-- Should you wish to connect to the database via GUI, a MongoDB-compatible client is needed. [Compass](https://www.mongodb.com/docs/compass/current/install/) is recommended. **Note:** to connect to the Database instance, TLS/SSL certificate is required. Visit the [Compass documentation](https://www.mongodb.com/docs/compass/current/connect/tls-ssl-connection/) to learn how to configure it when connecting.
+- Should you wish to connect to the database via GUI, a MongoDB-compatible client is needed. [Compass](https://www.mongodb.com/docs/compass/current/install/) is recommended. **Note:** to connect to the Database instance, TLS/SSL certificate is required. Visit the [Compass documentation](https://www.mongodb.com/docs/compass/current/connect/advanced-connection-options/tls-ssl-connection/) to learn how to configure it when connecting.
 - Access to [IBM Cloud](https://cloud.ibm.com/) will be required for application deployment. This will be provided to you via e-mail.
 
 ### 4.1. Environment variables
