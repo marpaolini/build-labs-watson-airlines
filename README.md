@@ -16,6 +16,7 @@
   - [4. Environment Setup](#4-environment-setup)
     - [4.0. Prerequisites](#40-prerequisites)
     - [4.1. Environment variables](#41-environment-variables)
+    - [4.2. MongoDB Connection](#42-mongodb-connection)
   - [5. Solution Deployment \& Configuration](#5-solution-deployment--configuration)
     - [5.1. Application Deployment on IBM Code Engine](#51-application-deployment-on-ibm-code-engine)
     - [5.2. Watson Assistant Conversation Flow](#52-watson-assistant-conversation-flow)
@@ -189,6 +190,52 @@ The application's environment variables are the following.
 Once you have this information, you must create a `.env` file where your code is located. See the [`.example.env`](./source/.example.env) file for reference.
 
 Afterwards, you must load those variables into your code. There are several packages available depending on your programming language. For JavaScript, for instance, the most popular one is [dotenv](https://www.dotenv.org/).
+
+### 4.2. MongoDB Connection
+
+Download the `.zip` file containing the [environment variables](#41-environment-variables) previously mentioned, and un-compress its contents in your code's source folder.
+
+A [sample code](./source/back-end/sample/sample.mongodb.js) has been provided to you, so it can be imported into your application. To make sure it works properly, you must first install its dependencies, namely `mongoose` and `dotenv`. You can do this by running: `npm install` from the code's directory.
+
+Then, from your code, load the environment variables and invoke the `create_connection()` function, which will automatically connect to MongoDB. See an example below:
+
+```javascript
+const path = require("path");
+const mongoose = require('mongoose');
+const mongo = require("./sample.mongodb");
+
+async function main(){
+
+    // Get global variables from .env file
+    require("dotenv").config({path: path.resolve(__dirname,".env")});
+
+    // Connect to database
+    const { create_connection } = require("./sample.mongodb");
+    await create_connection();    
+    
+    ...    
+}
+
+main();
+```
+
+The console will display a `MongoDB connection successful.` message. Afterwards, you can access MongoDB's data, specified in a [previous section](#3-database-specifications), by using mongoose's [schemas](https://mongoosejs.com/docs/guide.html). A [sample](./source/back-end/sample/sample.schema.js) definition has been provided for you. You can import this sample and invoke mongo operations from it. 
+
+See an example for listing a schema's objects below:
+
+```javascript
+const Sample = require("./sample.schema");
+
+async function sample_schema(){
+
+  console.log(await Sample.find({}));
+
+}
+```
+
+Should you desire to connect to MongoDB using Compass or similar offerings, you must obtain the TLS secret from the Secrets Manager instance. To do so, use the `GET /api/v2/secrets` endpoint to obtain the secret, by it's ID. This value has been provided to you.
+
+See the [Secret Manager API Docs](https://cloud.ibm.com/apidocs/secrets-manager/secrets-manager-v2) for more information.
 
 ## 5. Solution Deployment & Configuration
 
