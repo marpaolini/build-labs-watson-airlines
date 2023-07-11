@@ -5,19 +5,25 @@ const swagger_autogen = require("swagger-autogen")({ openapi: "3.0.0" });
 
 // Data schemas
 const mongo_specs = {
-    Sample: {
+    flight: {
         type: "object",
         properties: {
-            ATTRIBUTE_1: {
+            AIRLINE: {
                 type: "string",
             },
-            ATTRIBUTE_2: {
+            FLIGHT_NUMBER: {
                 type: "number",
             },
-            ATTRIBUTE_3: {
+            ORIGIN_AIRPORT: {
+                type: "string",
+            },
+            DESTINATION_AIRPORT: {
+                type: "string",
+            },
+            CANCELLED: {
                 type: "boolean",
             },
-            ATTRIBUTE_4: {
+            ARRIVAL_DATE: {
                 type: "date",
             },
         },
@@ -31,14 +37,14 @@ const general_specs = {
         description:
             "This is a Sample REST API for the Watson Airlines Customer Experience use case.",
         contact: {
-            name: "Josefina R. Casanova",
-            email: "josefinarcasanova@ibm.com",
+            name: "Mariana Paolini Lara",
+            email: "m.paolinilara@gmail.com",
         },
         version: "1.0.0",
     },
     servers: [
         {
-            url : "https://localhost:8080",
+            url : "https://localhost:3001",
             description : "Local Server",
         },
         {
@@ -58,8 +64,8 @@ const general_specs = {
 // API Routes
 // NOTE: if using Express Router, pass only the root file where the route starts.
 const api_routes = [
-    "./app.js",
-    "../../server.js"
+    "/app.js",
+    "./sample.controller.js"
 ];
 
 // Output file path

@@ -12,7 +12,7 @@ WORKDIR /usr/src/app
 
 # Install dependencies
 COPY package*.json ./
-RUN npm install
+RUN npm install && mv node_modules ../
 
 # Bundle app source
 COPY . .

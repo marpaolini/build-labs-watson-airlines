@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "ibm-watson": "^8.0.0",
+    "mongoose": "^7.3.2",
+    "swagger-autogen": "^2.23.4"
+  }
+}
