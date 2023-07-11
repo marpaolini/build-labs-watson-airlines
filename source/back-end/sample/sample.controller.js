@@ -9,7 +9,7 @@ const flight = require("./flight.schema");
  * @param {JSON} res response information
  * @returns {JSON} return description
  */
-const sample = async (req = request, res = response) => {
+const getFlights = async (req = request, res = response) => {
     // Returns list of Sample objects under "result" field
     /* #swagger.responses[200] = {
             "description": "OK",
@@ -32,13 +32,18 @@ const sample = async (req = request, res = response) => {
     */
     try {
         // Your Code Goes Here!!!!
-        
+        const flights = await flight.find({
+            AIRLINE: "WA",
+            ORIGIN_AIRPORT: "OGG",
+            DESTINATION_AIRPORT: "HNL",
+            DEPARTURE_DATE: new Date("2023-01-01T14:45:00.000Z")
+        })
         // Return query result
         res.json ({
             result : flights
         });
     } catch (error) {
-        res.json ({
+        res.status(404).json ({
             status : error.status
         });
     }
