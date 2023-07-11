@@ -1,7 +1,7 @@
 const { request, response } = require("express");
 
 // Mongoose Schemas
-const Sample = require("./sample.schema");
+const flight = require("./flight.schema");
 
 /**
  * Sample Controller
@@ -35,7 +35,7 @@ const sample = async (req = request, res = response) => {
         
         // Return query result
         res.json ({
-            result : result
+            result : flights
         });
     } catch (error) {
         res.json ({
@@ -45,5 +45,5 @@ const sample = async (req = request, res = response) => {
 };
 
 module.exports = {
-    sample,
+    getFlights,
 };
