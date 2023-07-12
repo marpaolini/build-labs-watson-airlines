@@ -12,6 +12,6 @@ app.use(express.static(path.resolve('/Users/mpaol/OneDrive/Documentos/build-labs
 app.use(router)
 
 app.listen(port, () => {
-    console.log(`Server in http://localstorage:${port}/`);
+    console.log(`Server in http://localhost:${port}/`);
 });
 create_connection().then(() => console.log("successful connection"));
