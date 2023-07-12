@@ -7,7 +7,7 @@ const {create_connection} = require('./sample/sample.mongodb');
 const app = express();
 const port = 3001;
 
-app.use(express.static(path.resolve('/Users/mpaol/OneDrive/Documentos/build-labs-watson-airlines/source/front-end')));
+app.use(express.static(path.resolve('/source/front-end')));
 
 app.use(router)
 

@@ -9,7 +9,7 @@ const router = Router();
 //endpoints
 
 router.get('/', (req, res) => {
-    res.sendFile(path.resolve('/Users/mpaol/OneDrive/Documentos/build-labs-watson-airlines/source/front-end','index.html'))
+    res.sendFile(path.resolve('/source/front-end','index.html'))
 });
 
 router.get('/vuelos', getFlights);
