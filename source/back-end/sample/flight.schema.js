@@ -1,15 +1,13 @@
 const mongoose = require('mongoose');
 
 const flightSchema = new mongoose.Schema({
-  AIRLINE : String,
-  FLIGHT_NUMBER : Number,
-  ORIGIN_AIRPORT : String,
-  DESTINATION_AIRPORT: String,
-  CANCELLED : Boolean,
-  DEPARTURE_DATE : Date,
-  ARRIVAL_DATE: Date
+  AIRLINE: { type: String, require: true },
+  FLIGHT_NUMBER: { type: Number, require: true },
+  ORIGIN_AIRPORT: { type: String, require: true },
+  DESTINATION_AIRPORT: { type: String, require: true },
+  CANCELLED: { type: Boolean, require: true },
+  DEPARTURE_DATE: { type: Date, require: true },
+  ARRIVAL_DATE: { type: Date, require: true }
 });
 
-const flight = mongoose.model("flight", flightSchema);
-
-module.exports = flight;
+module.exports = Flight = mongoose.model("Flight", flightSchema);

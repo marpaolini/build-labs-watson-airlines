@@ -1,10 +1,8 @@
 const mongoose = require('mongoose');
 
 const airlineSchema = new mongoose.Schema({
-  IATA_CODE : String,
-  AIRLINE : String
+  IATA_CODE: { type: String, require: true },
+  AIRLINE: { type: String, require: true }
 });
 
-const airline = mongoose.model("airline", airlineSchema);
-
-module.exports = airline;
+module.exports = Airline = mongoose.model("Airline", airlineSchema);

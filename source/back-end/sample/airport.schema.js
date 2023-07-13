@@ -1,13 +1,11 @@
 const mongoose = require('mongoose');
 
 const airportSchema = new mongoose.Schema({
-  IATA_CODE : String,
-  AIRPORT : String,
-  CITY : String,
-  STATE : String,
-  COUNTRY : String
+  IATA_CODE: { type: String, require: true },
+  AIRPORT: { type: String, require: true },
+  CITY: { type: String, require: true },
+  STATE: { type: String, require: true },
+  COUNTRY: { type: String, require: true }
 });
 
-const airport = mongoose.model("airport", airportSchema);
-
-module.exports = airport;
+module.exports = Airport = mongoose.model("Airport", airportSchema);
