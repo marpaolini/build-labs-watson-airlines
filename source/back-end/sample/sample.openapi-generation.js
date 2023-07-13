@@ -44,20 +44,27 @@ const general_specs = {
     },
     servers: [
         {
-            url : "https://localhost:3001",
-            description : "Local Server",
+            url: "https://localhost:3001",
+            description: "Local Server",
         },
         {
-            url: "https://{app-name}.{cloud-region}.codeengine.appdomain.cloud",
+            url: "https://build-labs-watson-airlines.14lbobqtzxew.us-south.codeengine.appdomain.cloud/",
             description: "IBM Code Engine Deployment",
         },
     ],
     schemes: ["http", "https"],
     consumes: ["application/json"],
     produces: ["application/json"],
-    security: [],
-    components: {
-        schemas: mongo_specs,
+    security: [
+        {
+            BasicAuth: [],
+        },
+    ],
+    securitySchemes: {
+        BasicAuth: {
+            type: "http",
+            scheme: "basic",
+        },
     },
 };
 

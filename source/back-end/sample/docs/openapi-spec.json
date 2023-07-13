@@ -15,13 +15,14 @@
       "description": "Local Server"
     },
     {
-      "url": "https://{app-name}.{cloud-region}.codeengine.appdomain.cloud",
+      "url": "https://build-labs-watson-airlines.14lbobqtzxew.us-south.codeengine.appdomain.cloud/",
       "description": "IBM Code Engine Deployment"
     }
   ],
   "paths": {
     "/": {
       "get": {
+        "summary": "Home Page | Watson Assistant",
         "description": "",
         "responses": {
           "200": {
@@ -32,6 +33,7 @@
     },
     "/vuelos/{id}": {
       "get": {
+        "summary": "Requires a flight id query to return the flight referenced by that id.",
         "description": "",
         "parameters": [
           {
@@ -58,6 +60,7 @@
     },
     "/porAeropuerto": {
       "get": {
+        "summary": "Requires two queries with IATA code type originAirport, destinationAirport to return the flights referenced by the query.",
         "description": "",
         "parameters": [
           {
@@ -90,6 +93,7 @@
     },
     "/porFecha": {
       "get": {
+        "summary": "Requires a departure date query to return the flights referenced by that departure date. But the information can leak through the airline, the origin airport and the destination airport. Everything in IATA Code.",
         "description": "",
         "parameters": [
           {
@@ -135,6 +139,7 @@
       }
     },
     "/aerolineas": {
+      "summary": "Only requires an IATA code query to return the associated airlines.",
       "get": {
         "description": "",
         "responses": {
@@ -146,79 +151,37 @@
           }
         }
       }
-    }
-  },
-  "components": {
-    "schemas": {
-      "flight": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "example": "object"
-          },
-          "properties": {
-            "type": "object",
-            "properties": {
-              "AIRLINE": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  }
-                }
-              },
-              "FLIGHT_NUMBER": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "number"
-                  }
-                }
-              },
-              "ORIGIN_AIRPORT": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  }
-                }
-              },
-              "DESTINATION_AIRPORT": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  }
-                }
-              },
-              "CANCELLED": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "boolean"
-                  }
-                }
-              },
-              "ARRIVAL_DATE": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "date"
-                  }
-                }
-              }
+    },
+    "/aeropuertos": {
+      "get": {
+        "summary": "Requires a query of the airport with IATA code to return the airports.",
+        "description": "",
+        "parameters": [
+          {
+            "name": "airport",
+            "in": "query",
+            "schema": {
+              "type": "string"
             }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
     }
   },
-  "security": []
+  "security": [
+    {
+      "BasicAuth": []
+    }
+  ]
 }
