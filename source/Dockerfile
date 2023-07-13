@@ -11,15 +11,19 @@ FROM --platform=linux/amd64 node:current-alpine as build
 WORKDIR /usr/src/app
 
 # Install dependencies
-COPY package*.json ./
-RUN npm install && mv node_modules ../
+COPY . .
+COPY back-end/package*.json ./back-end
+RUN cd back-end && mv node_modules ../ && npm install 
 
 # Bundle app source
-COPY . .
+
 
 # ------------------------------
 # Stage 2: Application Running
 # ------------------------------
 
+# especificacion de puerto
+EXPOSE 3001
+
 # Run application
-CMD [ "node", "app.js" ]
+CMD [ "node", "back-end/app.js" ]

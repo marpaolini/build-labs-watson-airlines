@@ -31,7 +31,7 @@ const getFlights = async (req = request, res = response) => {
         }   
     */
     try {
-        // Your Code Goes Here!!!!
+        
         const flights = await flight.find({
             AIRLINE: "WA",
             ORIGIN_AIRPORT: "OGG",

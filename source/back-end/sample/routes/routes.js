@@ -9,7 +9,7 @@ const router = Router();
 //endpoints
 
 router.get('/', (req, res) => {
-    res.sendFile(path.resolve('/source/front-end','index.html'))
+    res.sendFile(path.join(__dirname, '../front-end', 'index.html'));
 });
 
 router.get('/vuelos', getFlights);
