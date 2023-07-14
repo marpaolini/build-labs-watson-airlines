@@ -23,7 +23,7 @@ RUN cd back-end && mv node_modules ../ && npm install
 # ------------------------------
 
 # especificacion de puerto
-EXPOSE 3001
+EXPOSE 8080
 
 # Run application
 CMD [ "node", "back-end/app.js" ]

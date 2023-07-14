@@ -44,7 +44,7 @@ const general_specs = {
     },
     servers: [
         {
-            url: "https://localhost:3001",
+            url: "https://localhost:8080",
             description: "Local Server",
         },
         {

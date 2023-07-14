@@ -1,10 +1,9 @@
 const express = require('express');
 const cors = require('cors');
-app.use(cors());
 const path = require('path');
 const { router } = require('./sample/routes/routes.js')
 const app = express();
-const port = 3001;
+const port = 8080;
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./sample/docs/openapi-spec.json');
 require('dotenv').config({path: path.resolve(__dirname,".env")});
@@ -18,7 +17,7 @@ create_connection().then(() => {
         console.error('MongoDB connection error:', error);
 });
 
-
+app.use(cors());
 app.use(express.static(path.join(__dirname, '../front-end')));
 app.use(router);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
